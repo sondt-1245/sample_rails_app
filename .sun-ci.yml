@@ -1,0 +1,9 @@
+stages:
+  - test
+
+jobs:
+  - name: test
+    stage: test
+    image: alpine
+    script:
+      - echo "done"

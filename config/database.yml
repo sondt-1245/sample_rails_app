@@ -21,14 +21,14 @@ test:
   adapter: sqlite3
   database: db/test.sqlite3
 
-#test:
-#  <<: *default
-#  adapter: postgresql
-#  encoding: unicode
-#  host: db
-#  username: postgres
-#  password:
-#  database: sample_rails_app_db_test
+test:
+ <<: *default
+ adapter: postgresql
+ encoding: unicode
+ host: db
+ username: dbuser
+ password: s
+ database: sample_rails_app_db_test
 
 production:
   adapter: postgresql

@@ -2,8 +2,20 @@ stages:
   - test
 
 jobs:
-  - name: test
-    stage: test
-    image: alpine
-    script:
-      - echo "done"
+- name: ruby
+  stage: test
+  image: ruby:2.7.2
+  services:
+  - name: db
+    image: postgres
+    environment:
+    - POSTGRES_DB=sample_rails_app_db_test
+    - POSTGRES_USER=dbuser
+    - POSTGRES_PASSWORD=secrets
+  script:
+  - bundle install --without production --path vendor/bundle
+  - rails test
+  cache:
+    - key: bundle
+      paths:
+        - vendor/bundle
